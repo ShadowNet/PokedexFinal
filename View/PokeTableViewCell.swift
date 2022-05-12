@@ -46,7 +46,7 @@ class PokeTableViewCell: UITableViewCell {
     
     
     
-    lazy var netManager = networkManager()
+    lazy var Manager = networkManager()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -109,7 +109,7 @@ class PokeTableViewCell: UITableViewCell {
         self.reset()
         var title = ""
         self.nameLabel.text = pokeLink.name
-        self.netManager.pokemonAttributes(url_string: pokeLink.url){[weak self] result in
+        self.Manager.pokemonAttributes(url_string: pokeLink.url){[weak self] result in
             switch result {
             case .success(let poke):
                 for type in poke.types {
@@ -120,7 +120,7 @@ class PokeTableViewCell: UITableViewCell {
                     return
                 }
 
-                self?.netManager.pokeImage(url_string: pic_link){ [weak self]
+                self?.Manager.pokeImage(url_string: pic_link){ [weak self]
                     result in
                     
                     switch result {
