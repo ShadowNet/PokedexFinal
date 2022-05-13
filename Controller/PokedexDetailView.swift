@@ -29,12 +29,12 @@ class PokemonDetailViewController: UIViewController {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "Pokemon name"
         label.textAlignment = .center
-        label.font = UIFont(name:"Courier", size: 20.0)
+        label.font = UIFont(name:"Pokemon.ttf", size: 20.0)
         label.textColor = .black
         return label
     }()
     
-    lazy var abilitiesPoke:UILabel = {
+    lazy var pokeAbilities:UILabel = {
         let label = UILabel()
         label.font = UIFont.boldSystemFont(ofSize: 20)
         label.textColor =  UIColor.red
@@ -47,7 +47,7 @@ class PokemonDetailViewController: UIViewController {
         return label
     }()
     
-    lazy var moves_poke:UILabel = {
+    lazy var pokeMoves:UILabel = {
         let label = UILabel()
         label.font = UIFont.boldSystemFont(ofSize: 20)
         label.textColor =  UIColor.red
@@ -68,7 +68,7 @@ class PokemonDetailViewController: UIViewController {
         label.text = "Write a full Description about the given pokemon "
         label.lineBreakMode = .byWordWrapping
         label.numberOfLines = 0
-        label.font = UIFont(name:"Courier", size: 15.0)
+        label.font = UIFont(name:"Pokemon.ttf", size: 15.0)
         label.textColor = .black
         return label
     }()
@@ -79,16 +79,21 @@ class PokemonDetailViewController: UIViewController {
       return scrollView
     }()
     
+//    lazy override var navigationItem:UILabel = {
+//        let label = UILabel()
+//        label.font = UIFont(name:"Pokemon.ttf", size: 15)
+//
+//    }()
     var pokeData: pokeModel?
     
     override func viewDidLoad() {
         
 
-                    
+//
 //                    let backbutton = UIButton(type: .custom)
-//                    backbutton.setImage(UIImage(named: "BackButton.png"), for: .normal) // Image can be downloaded from here below link
+//                    backbutton.setImage(UIImage(named: "BackButton.png"), for: .normal)
 //                    backbutton.setTitle("Back", for: .normal)
-//                    backbutton.setTitleColor(backbutton.tintColor, for: .normal) // You can change the TitleColor
+//                    backbutton.setTitleColor(backbutton.tintColor, for: pokeData.normal)
 //                    backbutton.addTarget(self, action: Selector(("backAction")), for: .touchUpInside)
 //
 //                    self.navigationItem.leftBarButtonItem = UIBarButtonItem(customView: backbutton)
@@ -97,7 +102,7 @@ class PokemonDetailViewController: UIViewController {
 //                func backAction() -> Void {
 //                    self.navigationController?.popViewController(animated: true)
 //                }
-        
+
         
         super.viewDidLoad()
         self.view.backgroundColor = .white
@@ -111,9 +116,9 @@ class PokemonDetailViewController: UIViewController {
         }
         self.nameLabel.text = name
         self.set_image(img_url: img_url)
-        self.set_details()
+        self.setDetails()
         self.pokemonMoves()
-        self.pokemon_abilities()
+        self.pokemonAbilities()
 
         let vStack = UIStackView(frame: .zero)
         vStack.translatesAutoresizingMaskIntoConstraints = false
@@ -127,8 +132,8 @@ class PokemonDetailViewController: UIViewController {
         vStack.addArrangedSubview(self.nameLabel)
         vStack.addArrangedSubview(self.pokemonImageView1)
         vStack.addArrangedSubview(self.descriptionLabel)
-        vStack.addArrangedSubview(self.moves_poke)
-        vStack.addArrangedSubview(self.abilitiesPoke)
+        vStack.addArrangedSubview(self.pokeMoves)
+        vStack.addArrangedSubview(self.pokeAbilities)
         vStack.addArrangedSubview(bottomBuffer)
         
         self.scrollView.addSubview(vStack)
@@ -159,7 +164,7 @@ class PokemonDetailViewController: UIViewController {
         
     }
     
-    private func set_details(){
+    private func setDetails(){
         var type_string = ""
         guard let name = pokeData?.name else{
             return
@@ -211,10 +216,10 @@ class PokemonDetailViewController: UIViewController {
             text += moves[i].move.name + ", "
         }
         
-        self.moves_poke.text = text
+        self.pokeMoves.text = text
     }
     
-    private func pokemon_abilities(){
+    private func pokemonAbilities(){
         var text = "\nAbilities: \n\n"
         guard let ability = pokeData?.abilities else{
             return
@@ -234,7 +239,7 @@ class PokemonDetailViewController: UIViewController {
             text += ability[i].ability.name + ", "
         }
         
-        self.abilitiesPoke.text = text
+        self.pokeAbilities.text = text
     }
     
 

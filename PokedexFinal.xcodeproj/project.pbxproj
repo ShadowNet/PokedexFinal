@@ -69,6 +69,7 @@
 		02A70C7F282C389000ABCB5D /* NetworkErrors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkErrors.swift; sourceTree = "<group>"; };
 		02A70C81282C3D6500ABCB5D /* launch.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = launch.storyboard; sourceTree = "<group>"; };
 		02A70C83282C49CD00ABCB5D /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
+		02A70C86282E22DB00ABCB5D /* Pokemon.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Pokemon.ttf; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +100,7 @@
 		02A70C2E282C2D7C00ABCB5D = {
 			isa = PBXGroup;
 			children = (
+				02A70C85282E22C700ABCB5D /* Resources */,
 				02A70C7A282C37ED00ABCB5D /* NetworkManager */,
 				02A70C73282C2FD000ABCB5D /* Extension */,
 				02A70C6A282C2DB500ABCB5D /* Model */,
@@ -195,6 +197,14 @@
 				02A70C7F282C389000ABCB5D /* NetworkErrors.swift */,
 			);
 			path = NetworkManager;
+			sourceTree = "<group>";
+		};
+		02A70C85282E22C700ABCB5D /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				02A70C86282E22DB00ABCB5D /* Pokemon.ttf */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

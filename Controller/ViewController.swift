@@ -7,7 +7,7 @@
 
 
 import UIKit
-
+//View controller that sets the limit for the tableview , includes pagination and UI setup
 class ViewController: UIViewController {
     
     lazy var PokeTableView: UITableView = {
@@ -22,9 +22,8 @@ class ViewController: UIViewController {
     }()
     
     var pokeSet = 0
-    var maxAmountOfPokemon = 121
+    var maxAmountOfPokemon = 120
     var pokemonList: [basicData] = []
-    //var nextPage = ""
     let NetworkManager = networkManager()
     var pokeAttr: [Int:pokeModel] = [:]
     
@@ -40,7 +39,7 @@ class ViewController: UIViewController {
         view.addSubview(self.PokeTableView)
         
         setupTable()
-        catchPokemon()
+        pokemonMaster()
     }
     
     func setupTable(){
@@ -50,12 +49,11 @@ class ViewController: UIViewController {
         self.PokeTableView.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor).isActive = true
     }
     
-    func catchPokemon() {
+    func pokemonMaster() {
         self.NetworkManager.engagePokemon(poke_set: self.pokeSet){[weak self] result in
             switch result {
             case .success(let page):
                 self?.pokemonList.append(contentsOf: page.results)
-                //self.nextPage = page.next ?? ""
                 DispatchQueue.main.async {
                     self?.PokeTableView.reloadData()
                 }
@@ -100,7 +98,7 @@ extension ViewController: UITableViewDelegate {
     }
         
 }
-
+//pagination
 extension ViewController: UITableViewDataSourcePrefetching {
     
     func tableView(_ tableView: UITableView, prefetchRowsAt indexPaths: [IndexPath]) {
@@ -110,7 +108,7 @@ extension ViewController: UITableViewDataSourcePrefetching {
         
         if self.pokeSet < maxAmountOfPokemon {
             self.pokeSet += 30
-            self.catchPokemon()
+            self.pokemonMaster()
         }
         
     }

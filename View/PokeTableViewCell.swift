@@ -6,15 +6,15 @@
 //
 
 import UIKit
-
+//cell will have a pokemonImageView image object, a nameLabel which shows the pokemon name data, and typeLabel that shows the type of the pokemon. ALl my label properties are adjusted programatically.
 class PokeTableViewCell: UITableViewCell {
     
     static let reuseId = "\(PokeTableViewCell.self)"
-    
+   //defining view characteristics of the cell
     lazy var pokemonImageView:UIImageView = {
         let img = UIImageView(frame: .zero)
-        img.contentMode = .scaleAspectFill // image will never be strecthed vertially or horizontally
-        img.translatesAutoresizingMaskIntoConstraints = false // enable autolayout
+        img.contentMode = .scaleAspectFill //the image will stay at a fixed position.
+        img.translatesAutoresizingMaskIntoConstraints = false // thus will enable the autolayout feature.
         img.contentMode = .scaleAspectFit
         img.backgroundColor = .red
         img.image = UIImage(named: "")
@@ -26,7 +26,7 @@ class PokeTableViewCell: UITableViewCell {
         label.font = UIFont.boldSystemFont(ofSize: 25)
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "Pokemon name"
-        label.font = UIFont(name:"Courier", size: 25.0)
+        label.font = UIFont(name:"Pokemon",size:25)
         label.textColor = .black
         //label.text?.capitalized
         return label
@@ -39,14 +39,14 @@ class PokeTableViewCell: UITableViewCell {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "Types: "
         label.textColor = .black
-        label.font = UIFont(name:"Courier", size: 15.0)
+        label.font = UIFont(name:"Pokemon.ttf", size: 15.0)
         label.lineBreakMode = .byWordWrapping
         return label
     }()
     
     
     
-    lazy var Manager = networkManager()
+    lazy var Manager = networkManager() //the network class object is initialized
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -57,9 +57,9 @@ class PokeTableViewCell: UITableViewCell {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+    //The cell is configured with the cell elements, The pokemon image, pokemon nameLabel and pokemon typeLabel are added to the cell of table view. The UI elements, image, and labels are added onto a stackview and The image is added to a horizontal stack view.The lables are then added to a vertical stack like name on top of type. Finally The constrainsts are set.
     func setupCell(){
-        self.contentView.backgroundColor = .white
+        self.contentView.backgroundColor = .white //Setting background of cell as white
         self.contentView.addSubview(self.pokemonImageView)
         
         let vStackLeft = UIStackView(frame: .zero)
@@ -104,6 +104,7 @@ class PokeTableViewCell: UITableViewCell {
         topBuffer.heightAnchor.constraint(equalTo: bottomBuffer.heightAnchor).isActive = true
         
     }
+    //configure block is defined,
     
     func configure(pokeLink: basicData, completion: @escaping (pokeModel) -> Void){
         self.reset()
@@ -143,7 +144,8 @@ class PokeTableViewCell: UITableViewCell {
         }
         
     }
-    
+   // reset method defination
+    //This method will reset the cell's UI elements data with default values like "Pokemon Name", "Type:" , and default image.
     private func reset() {
         self.pokemonImageView.image = UIImage(named: "")
         self.nameLabel.text = "Pokemon Name"

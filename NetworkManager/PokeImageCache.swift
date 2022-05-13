@@ -6,7 +6,7 @@
 //
 
 import Foundation
-
+//basically from the movie app. Works great.
 final class ImageCache {
     
     static let shared = ImageCache()

@@ -6,7 +6,7 @@
 //
 
 import UIKit
-
+// network manager class that fetches the data needed
 class networkManager {
     
     let session: URLSession

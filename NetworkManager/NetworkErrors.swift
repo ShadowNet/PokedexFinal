@@ -5,6 +5,7 @@
 //  Created by Redghy on 5/5/22.
 //
 
+//Just network errors enum just in case
 import Foundation
 
 enum networkError: Error {

@@ -4,16 +4,16 @@
 //
 //  Created by Redghy on 5/7/22.
 //
-
+// where all the magic is stored.
 import Foundation
 
 struct pokeModel: Decodable{
     let abilities: [Ability]
     let base_experience: Int
     let forms: [basicData]
-    let game_indices: [GameIndex]
+    let game_indices: [gameIndex]
     let height: Int
-    let held_items: [HeldItem]
+    let held_items: [heldItem]
     let id: Int
     let is_default: Bool
     let location_area_encounters: String
@@ -34,27 +34,26 @@ struct Ability: Decodable {
     let slot: Int
 }
 
-struct GameIndex: Decodable {
+struct gameIndex: Decodable {
     let game_index: Int
     let version: basicData
 }
 
-struct HeldItem: Decodable {
+struct heldItem: Decodable {
     let item: basicData
-    let version_details: [VersionDetails]
+    let version_details: [versionDetails]
 }
 
-struct VersionDetails: Decodable {
+struct versionDetails: Decodable {
     let rarity: Int
     let version: basicData
 }
 
 struct Move: Decodable {
     let move: basicData
-    //let version_group_details: [VersionGroupDetails]
 }
 
-struct VersionGroupDetails: Decodable {
+struct versionGroupDetails: Decodable {
     let level_learned_at: Int
     let move_learn_method: basicData
     let version_group: basicData
@@ -72,12 +71,12 @@ struct Sprites: Decodable {
     //let other: OtherData
 }
 
-struct OtherData: Decodable {
-    let dream_world: DreamWorld
+struct otherData: Decodable {
+    let nexus: Nexus
     let home: Home
 }
 
-struct DreamWorld: Decodable {
+struct Nexus: Decodable {
     let front_default: String?
     let front_female: String?
 }
