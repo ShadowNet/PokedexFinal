@@ -11,7 +11,7 @@
 		<string>Pokemon.ttf</string>
 	</array>
 	<key>CFBundleIdentifier</key>
-	<string></string>
+	<string>CFBundleIdentifier</string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>
